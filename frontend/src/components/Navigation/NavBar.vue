@@ -16,7 +16,10 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav me-auto mb-1 mb-lg-0">
             <li class="nav-item">
-            <a class="nav-link rounded active" aria-current="page" href="#">Home</a>
+            <router-link to="/" class="nav-link rounded active" aria-current="page">Home</router-link>
+            </li>
+            <li class="nav-item">
+            <router-link to="/products" class="nav-link rounded active" aria-current="page">Products</router-link>
             </li>
         </ul>
         <form class="d-flex input-group w-auto">
