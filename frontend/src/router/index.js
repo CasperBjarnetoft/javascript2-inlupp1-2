@@ -10,9 +10,10 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/products/product/:_id',
+    path: '/products/product/:id',
     name: 'product',
-    component: ProductDetails
+    component: ProductDetails,
+    props: true
   },
   {
     path: '/products',

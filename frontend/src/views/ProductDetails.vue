@@ -5,22 +5,9 @@
 </template>
 
 <script>
-import{ mapActions, mapGetters } from 'vuex'
 
 export default {
-    props: ['_id'],
-    methods: {
-        ...mapActions(['getProduct', 'clearPost'])
-    },
-    created() {
-        this.getProduct(this.id)
-    },
-    computed: {
-        ...mapGetters(['product'])
-    },
-    unmounted() {
-        this.clearPost()
-    }
+    props: ['id'],
 
 }
 </script>
