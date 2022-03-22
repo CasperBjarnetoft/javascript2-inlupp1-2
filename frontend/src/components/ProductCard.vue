@@ -9,7 +9,7 @@
         <h5 class="card-title">{{ product.model }}</h5>
         <h5 class="card-title">{{ product.year }}</h5>
         <p class="card-text">{{product.price}}</p>
-        <a href="#!" class="btn btn-primary">Buy</a>
+        <a href="#!" class="btn btn-primary"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>
       </div>
     </div>
   </div>

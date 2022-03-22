@@ -9,7 +9,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import Card from '../components/Card.vue'
+import Card from '../components/ProductCard.vue'
 
 export default {
   components: {
