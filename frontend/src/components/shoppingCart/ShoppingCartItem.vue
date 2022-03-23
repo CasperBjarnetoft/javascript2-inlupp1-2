@@ -10,9 +10,9 @@
           </div>
         </div>
         <div class="d-flex justify-content-around">
-          <button type="button" class="btn btn-primary btn-floating" @click.stop="CartRemoveItem">-</button>
+          <button type="button" class="btn btn-primary btn-floating" @click.stop="RemoveFromeCart({product: item.product, quantity: 1})">-</button>
           <p class="m-2">{{ item.quantity }}</p>
-          <button type="button" class="btn btn-primary btn-floating" @click.stop="CartAddItem">+</button>
+          <button type="button" class="btn btn-primary btn-floating" @click.stop="addToCart({product: item.product, quantity: 1})">+</button>
         </div>
         <div class="ms-3">
           <button type="button" class="btn btn-danger btn-rounded">X</button>
@@ -21,12 +21,12 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
     props: ['item'],
     methods: {
-      ...mapGetters(['CartRemoveItem', 'CartAddItem'])
+      ...mapActions(['addToCart', 'RemoveFromeCart'])
     }
 }
 </script>

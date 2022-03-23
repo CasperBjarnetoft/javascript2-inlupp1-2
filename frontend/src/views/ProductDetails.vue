@@ -1,5 +1,5 @@
 <template>
-  <div class="details">
+  <div class="details" v-if="product">
     <div class="d-flex justify-content-center">
       <div class="mt-5 mb-5 bg-light w-25 shadow-5-strong rounded">
         <div class="text-center mb-3">

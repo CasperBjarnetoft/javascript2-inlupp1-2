@@ -1,3 +1,4 @@
+
 export default {
     state: {
         cart: []
@@ -20,20 +21,6 @@ export default {
             }
             return total
         },
-        CartRemoveItem: state => {
-            let minus = 1
-            state.cart.forEach(item => {
-                item.quantity -= minus
-            })
-            return minus
-        },
-        CartAddItem: state => {
-            let plus = 1
-            state.cart.forEach(item => {
-                item.quantity += plus
-            })
-            return plus
-        }
     },
     mutations: {
         ADD_TO_CART: (state, { product, quantity }) => {
@@ -44,10 +31,23 @@ export default {
             }
             state.cart.push({ product, quantity })
         },
+        REMOVE_FROME_CART: (state, { product, quantity }) => {
+            let exist = state.cart.find(item => item.product._id == product._id)
+            if(exist) {
+                exist.quantity -= quantity
+                return
+            }
+            state.cart.filter({ product, quantity })
+        },
+
     },
     actions: {
         addToCart: ({commit}, { product, quantity }) => {
             commit('ADD_TO_CART', { product, quantity })
+        },
+        RemoveFromeCart: ({commit}, { product, quantity }) => {
+            commit('REMOVE_FROME_CART', { product, quantity })
         }
+        
     }
   }
