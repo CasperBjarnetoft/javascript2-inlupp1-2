@@ -8,17 +8,17 @@
       <div class="card-body">
         <h5 class="card-title">{{ product.model }}</h5>
         <h5 class="card-title">{{ product.year }}</h5>
-        <p class="card-text">{{product.price}}</p>
-        <a href="#!" class="btn btn-primary"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</a>
+        <p class="card-text">{{product.price}} kr</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+
 export default {
     name: "appCard",
-    props: ['product']
+    props: ['product'],
 }
 </script>
 

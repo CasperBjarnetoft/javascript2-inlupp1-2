@@ -20,4 +20,10 @@ export default {
   body {
     background-color: lightgray;
   }
+  .btn-primary {
+    background-color: #0a54a3;
+  }
+  .btn-primary:hover {
+      background-color: #0f60b6;
+  }
 </style>

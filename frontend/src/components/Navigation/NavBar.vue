@@ -25,7 +25,7 @@
         </div>
         <div class="d-flex align-items-center">
             <ul class="navbar-nav d-flex flex-row">
-                <li class="nav-item me-3 me-lg-0 dropdown">
+                <li class="dropdown">
                     <a
                     class="nav-link text-light dropdown-toggle hidden-arrow"
                     href="#"
@@ -35,16 +35,16 @@
                     aria-expanded="false"
                     >
                     <i class="fas fa-shopping-cart"></i>
-                    <span class="badge rounded-pill badge-notification bg-danger">0</span>
+                    <span class="badge rounded-pill badge-notification bg-danger">{{ cartItemCount }}</span>
                     </a>
                     <div
-                    class="dropdown-menu dropdown-menu-end shopping-cart"
+                    class="shopping-cart dropdown-menu dropdown-menu-end"
                     aria-labelledby="navbarDropdownMenuLink"
                     >
                       <ShoppingCart />
                     </div>
                 </li>
-                <li class="nav-item me-3 me-lg-0 dropdown">
+                <li class="dropdown">
                     <a
                     class="nav-link text-light dropdown-toggle"
                     href="#"
@@ -73,27 +73,27 @@
 
 <script>
 import ShoppingCart from '../shoppingCart/ShoppingCart.vue'
+import { mapGetters } from 'vuex'
 
 export default {
     components: {
         ShoppingCart,
+    },
+    computed: {
+        ...mapGetters(['cartItemCount'])
     }
 
 }
 </script>
 
 <style scoped>
+.shopping-cart {
+    min-width: 550px;
+}
 nav {
     background-color: #063971;
-}
-.btn {
-    background-color: #0a54a3;
-}
-.btn:hover {
-    background-color: #0f60b6;
 }
 .nav-link:hover {
     background-color: #0b4d94;
 }
-
 </style>

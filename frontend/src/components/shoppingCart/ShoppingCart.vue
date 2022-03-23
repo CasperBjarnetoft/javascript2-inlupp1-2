@@ -1,15 +1,29 @@
 <template>
-  <div class="container bg-light text-center w-50">
-      <h5>Cart</h5>
+  <div class="container">
+      <header class="text-center m-2 fs-3 fw-bolder">Cart</header>
+      <li><hr class="dropdown-divider" /></li>
+      <ShoppingCartItem v-for="item in shoppingCart" :key="item.product._id" :item="item"/>
+      <div class="mb-3 mt-2">
+        <li><hr class="dropdown-divider" /></li>
+        <div class="d-flex justify-content-between">
+          <h4>Total cost: {{ ShoppingCartTotal }}</h4>
+          <button type="button" class="btn btn-primary">checkout</button>
+        </div>
+      </div>
   </div>
 </template>
 
 <script>
-export default {
+import { mapGetters } from 'vuex'
+import ShoppingCartItem from './ShoppingCartItem.vue'
 
+export default {
+  components: { ShoppingCartItem },
+  computed: {
+    ...mapGetters([ 'shoppingCart', 'ShoppingCartTotal'])
+  }
 }
 </script>
 
-<style>
-
+<style scoped>
 </style>
