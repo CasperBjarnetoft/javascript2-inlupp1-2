@@ -19,6 +19,20 @@ export default {
                 })
             }
             return total
+        },
+        CartRemoveItem: state => {
+            let minus = 1
+            state.cart.forEach(item => {
+                item.quantity -= minus
+            })
+            return minus
+        },
+        CartAddItem: state => {
+            let plus = 1
+            state.cart.forEach(item => {
+                item.quantity += plus
+            })
+            return plus
         }
     },
     mutations: {
@@ -29,7 +43,7 @@ export default {
                 return
             }
             state.cart.push({ product, quantity })
-        }
+        },
     },
     actions: {
         addToCart: ({commit}, { product, quantity }) => {

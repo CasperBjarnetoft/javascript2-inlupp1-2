@@ -8,6 +8,7 @@
       <div class="card-body">
         <h5 class="card-title">{{ product.model }}</h5>
         <h5 class="card-title">{{ product.year }}</h5>
+        <li><hr class="dropdown-divider" /></li>
         <p class="card-text">{{product.price}} kr</p>
       </div>
     </div>
@@ -25,5 +26,8 @@ export default {
 <style scoped>
   .cards {
     color: black;
+  }
+  li {
+    list-style: none;
   }
 </style>
