@@ -22,9 +22,8 @@
             <router-link to="/products" class="nav-link rounded active" aria-current="page">Products</router-link>
             </li>
         </ul>
-        </div>
         <div class="d-flex align-items-center">
-            <ul class="navbar-nav d-flex flex-row">
+            <ul class="navbar-nav d-flex">
                 <li class="dropdown">
                     <a
                     class="nav-link text-light dropdown-toggle hidden-arrow"
@@ -67,6 +66,7 @@
                 </li>
             </ul>
         </div>
+      </div>
     </div>
     </nav>
 </template>

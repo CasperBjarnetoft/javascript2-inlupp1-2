@@ -6,7 +6,7 @@
           </div>
           <div>
             <h5>{{ item.product.model }}</h5>
-            <p>{{ item.product.price }}</p>
+            <p>{{ item.product.price }} kr</p>
           </div>
         </div>
         <div class="d-flex justify-content-around">
