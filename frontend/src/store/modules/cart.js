@@ -33,12 +33,18 @@ export default {
         },
         REMOVE_FROME_CART: (state, { product, quantity }) => {
             let exist = state.cart.find(item => item.product._id == product._id)
-            if(exist) {
+            if(exist.quantity > 1) {
                 exist.quantity -= quantity
+                state.cart.filter({ product, quantity })
                 return
+            }        
+            else {
+                state.cart = state.cart.filter(item => item.product._id !== product._id ) 
             }
-            state.cart.filter({ product, quantity })
         },
+        REMOVE_CART_ITEM: (state, { product }) => {
+            state.cart = state.cart.filter(item => item.product._id !== product._id ) 
+        }
 
     },
     actions: {
@@ -47,6 +53,9 @@ export default {
         },
         RemoveFromeCart: ({commit}, { product, quantity }) => {
             commit('REMOVE_FROME_CART', { product, quantity })
+        },
+        RemoveCartItem: ({commit}, { product }) => {
+            commit('REMOVE_CART_ITEM', { product })
         }
         
     }

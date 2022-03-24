@@ -15,7 +15,7 @@
           <button type="button" class="btn btn-primary btn-floating" @click.stop="addToCart({product: item.product, quantity: 1})">+</button>
         </div>
         <div class="ms-3">
-          <button type="button" class="btn btn-danger btn-rounded">X</button>
+          <button type="button" class="btn btn-danger btn-rounded" @click.stop="RemoveCartItem({product: item.product })">X</button>
         </div>
       </div>
 </template>
@@ -26,7 +26,7 @@ import { mapActions } from 'vuex'
 export default {
     props: ['item'],
     methods: {
-      ...mapActions(['addToCart', 'RemoveFromeCart'])
+      ...mapActions(['addToCart', 'RemoveFromeCart', 'RemoveCartItem'])
     }
 }
 </script>
