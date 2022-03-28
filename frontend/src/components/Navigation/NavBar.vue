@@ -23,7 +23,7 @@
             </li>
         </ul>
         <div class="d-flex align-items-center">
-            <ul class="navbar-nav d-flex">
+            <div class="navbar-nav d-flex">
                 <li class="dropdown">
                     <a
                     class="nav-link text-light dropdown-toggle hidden-arrow"
@@ -43,7 +43,7 @@
                       <ShoppingCart />
                     </div>
                 </li>
-                <li class="dropdown">
+                <li class="dropdown" v-if="loggedIn">
                     <a
                     class="nav-link text-light dropdown-toggle"
                     href="#"
@@ -60,11 +60,13 @@
                     </li>
                     <li><hr class="dropdown-divider" /></li>
                     <li>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <router-link class="dropdown-item" to="/login" @click="logout">Logout</router-link>
                     </li>
                     </ul>
                 </li>
-            </ul>
+                <router-link to="/login" class="text-light mt-2 ms-1" v-else>Login</router-link>
+            </div>
+            
         </div>
       </div>
     </div>
@@ -73,14 +75,17 @@
 
 <script>
 import ShoppingCart from '../shoppingCart/ShoppingCart.vue'
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
     components: {
         ShoppingCart,
     },
     computed: {
-        ...mapGetters(['cartItemCount'])
+        ...mapGetters(['cartItemCount', 'loggedIn'])
+    },
+    methods: {
+        ...mapActions(['logout'])
     }
 
 }

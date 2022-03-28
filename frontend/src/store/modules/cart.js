@@ -35,7 +35,6 @@ export default {
             let exist = state.cart.find(item => item.product._id == product._id)
             if(exist.quantity > 1) {
                 exist.quantity -= quantity
-                state.cart.filter({ product, quantity })
                 return
             }        
             else {
