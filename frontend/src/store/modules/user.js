@@ -27,7 +27,7 @@ export default {
             if(res.status == 200) {
                 localStorage.setItem('token', res.data.token)
                 commit('SET_USER', res.data.token)
-
+   
                 if(payload.route) {
                     router.push(payload.route)
                 }

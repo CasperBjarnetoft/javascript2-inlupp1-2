@@ -44,7 +44,8 @@ export default {
         },
         REMOVE_CART_ITEM: (state, { product }) => {
             state.cart = state.cart.filter(item => item.product._id !== product._id ) 
-        }
+        },
+
 
     },
     actions: {
@@ -57,8 +58,8 @@ export default {
         RemoveCartItem: ({commit}, { product }) => {
             commit('REMOVE_CART_ITEM', { product })
         },
-        PostCart: ({commit}, { cart, userId}) => {
-            const res = axios.post('http://localhost:9999/api/users/cart', { cart, userId })
+        PostCart: async ({commit}, { cart, userId}) => {
+            const res = await axios.post('http://localhost:9999/api/users/cart', { cart, userId })
             commit('SET_PRODUCTS', res.data)
         }
     }
