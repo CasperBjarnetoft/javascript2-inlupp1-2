@@ -3,7 +3,7 @@ import router from "@/router"
 
 export default {
     state: {
-        userToken: null,
+        user: null,
         loggedIn: false,
     },
     getters: {
@@ -12,7 +12,7 @@ export default {
     mutations: {
         SET_USER: (state, token) => {
             if(token) {
-                state.userToken = token
+                state.user = token
                 state.loggedIn = true
             } 
             else {
@@ -26,7 +26,7 @@ export default {
             const res = await axios.post('http://localhost:9999/api/users/login', payload.user)
             if(res.status == 200) {
                 localStorage.setItem('token', res.data.token)
-                commit('SET_USER', res.data.token)
+                commit('SET_USER', res.data)
    
                 if(payload.route) {
                     router.push(payload.route)
@@ -47,7 +47,7 @@ export default {
         register: async ({commit}, payload) => {
             const res = await axios.post('http://localhost:9999/api/users/register', payload.user)
                 localStorage.setItem('token', res.data.token)
-                commit('SET_USER', res.data.token)
+                commit('SET_USER', res.data)
 
                 if(payload.route) {
                     router.push(payload.route)

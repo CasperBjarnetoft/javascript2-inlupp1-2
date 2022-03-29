@@ -21,7 +21,7 @@
                 <input type="password" id="defaultSubscriptionFormEmail" class="form-control" placeholder="Password" v-model="password">
 
                 <div class="text-center">
-                  <button class="btn btn-primary mt-3">Login</button>
+                  <button class="btn btn-primary mt-3">Sign up</button>
                 </div>
   
             </div>

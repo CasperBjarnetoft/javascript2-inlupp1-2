@@ -105,7 +105,8 @@ exports.loginUser = (req, res) => {
                 statusCode: 200,
                 status: true,
                 message: 'Login was succesful',
-                token: auth.generateToken(user)
+                token: auth.generateToken(user),
+                id: user._id
             })
         })
     })
