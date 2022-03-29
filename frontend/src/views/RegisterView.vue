@@ -10,7 +10,11 @@
           <div class="card">
             <div class="card-body">
 
-                <h3 class="font-weight-bold my-4 pb-2 text-center dark-grey-text">Log In</h3>
+                <h3 class="font-weight-bold my-4 pb-2 text-center dark-grey-text">Sign up</h3>
+
+                <input type="text" id="firstname" class="form-control mb-4" placeholder="First Name" v-model="firstName">
+
+                <input type="text" id="lastname" class="form-control mb-4" placeholder="Last Name" v-model="lastName">
 
                 <input type="email" id="defaultSubscriptionFormPassword" class="form-control mb-4" placeholder="Email" v-model="email">
 
@@ -18,10 +22,6 @@
 
                 <div class="text-center">
                   <button class="btn btn-primary mt-3">Login</button>
-                </div>
-                
-                <div class="mt-2">
-                  <router-link to="/register" class="text-dark">Sign up</router-link>
                 </div>
   
             </div>
@@ -41,27 +41,29 @@
 <script>
 import { mapActions } from 'vuex'
 
+
 export default {
   data() {
     return {
+      firstName: '',
+      lastName: '',
       email: '',
       password: ''
     }
   },
   methods: {
-    ...mapActions(['login']),
-    async handleSubmit() {
-      if(this.email.trim() === '' || this.password.trim() === '') {
-        return
-      }
-      let user = {
-        email: this.email,
-        password: this.password
-      }
+      ...mapActions(['register']),
+      async handleSubmit() {
+          let user = {
+              firstName: this.firstName,
+              lastName: this.lastName,
+              email: this.email,
+              password: this.password
+          }
 
-      let route = this.$route.query.redirect
-      this.login({user, route})
-    }
+            let route = this.$route.query.redirect
+            this.register({user, route})
+      }
   }
 }
 </script>

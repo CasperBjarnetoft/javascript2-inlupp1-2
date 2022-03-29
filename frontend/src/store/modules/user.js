@@ -19,7 +19,7 @@ export default {
                 state.loggedIn = false,
                 state.userToken = null
             }
-        }
+        },
     },
     actions: {
         login: async ({commit}, payload) => {
@@ -43,6 +43,18 @@ export default {
             }   catch {
                 console.log('not logged in')
             }
+        },
+        register: async ({commit}, payload) => {
+            const res = await axios.post('http://localhost:9999/api/users/register', payload.user)
+                localStorage.setItem('token', res.data.token)
+                commit('SET_USER', res.data.token)
+
+                if(payload.route) {
+                    router.push(payload.route)
+                }
+                else {
+                    router.push({ name: 'home'})
+                }
         },
     }
 }

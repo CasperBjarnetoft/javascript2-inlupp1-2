@@ -1,6 +1,9 @@
 <template>
   <div class="container">
-      <header class="text-center m-2 fs-3 fw-bolder">Cart</header>
+      <div class="d-flex justify-content-between">
+        <header class="text-center m-2 fs-3 fw-bolder">Cart</header>
+        <router-link to="/" class="text-dark m-2 text-decoration-underline" v-if="loggedIn">Save cart</router-link>
+      </div>
       <li><hr class="dropdown-divider" /></li>
       <div v-if="shoppingCart.length < 1" class="text-center m-3">
         <h4>No products</h4>
@@ -23,7 +26,7 @@ import ShoppingCartItem from './ShoppingCartItem.vue'
 export default {
   components: { ShoppingCartItem },
   computed: {
-    ...mapGetters([ 'shoppingCart', 'ShoppingCartTotal'])
+    ...mapGetters([ 'shoppingCart', 'ShoppingCartTotal', 'loggedIn'])
   }
 }
 </script>
