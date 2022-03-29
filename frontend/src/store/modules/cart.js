@@ -1,3 +1,4 @@
+import axios from 'axios'
 
 export default {
     state: {
@@ -55,7 +56,10 @@ export default {
         },
         RemoveCartItem: ({commit}, { product }) => {
             commit('REMOVE_CART_ITEM', { product })
+        },
+        PostCart: ({commit}, { cart, userId}) => {
+            const res = axios.post('http://localhost:9999/api/users/cart', { cart, userId })
+            commit('SET_PRODUCTS', res.data)
         }
-        
     }
   }
