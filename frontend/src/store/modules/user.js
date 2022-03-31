@@ -7,7 +7,8 @@ export default {
         loggedIn: false,
     },
     getters: {
-        loggedIn: state => state.loggedIn
+        loggedIn: state => state.loggedIn,
+        userid: state => state.user.id
     },
     mutations: {
         SET_USER: (state, token) => {
@@ -56,5 +57,12 @@ export default {
                     router.push({ name: 'home'})
                 }
         },
+        checkuser: ({commit}) => {
+            const token = localStorage.getItem('token')
+
+            if(token) {
+                commit('SET_USER', token)
+            }
+        }
     }
 }

@@ -2,10 +2,12 @@ import axios from 'axios'
 
 export default {
     state: {
-        cart: []
+        cart: [],
+        orders: null,
     },
     getters: {
         shoppingCart: state => state.cart,
+        Orders: state => state.orders,
         cartItemCount: state => {
             let items = 0
             state.cart.forEach(item => {
@@ -45,8 +47,10 @@ export default {
         REMOVE_CART_ITEM: (state, { product }) => {
             state.cart = state.cart.filter(item => item.product._id !== product._id ) 
         },
-
-
+        SET_ORDERS: (state, orders) => {
+            state.orders = orders
+        }
+        
     },
     actions: {
         addToCart: ({commit}, { product, quantity }) => {
@@ -58,9 +62,23 @@ export default {
         RemoveCartItem: ({commit}, { product }) => {
             commit('REMOVE_CART_ITEM', { product })
         },
-        PostCart: async ({commit}, { cart, userId}) => {
-            const res = await axios.post('http://localhost:9999/api/users/cart', { cart, userId })
-            commit('SET_PRODUCTS', res.data)
+        postOrder: async (context, order) => {
+                console.log(order)
+                let token = localStorage.getItem('token')
+                const config = {
+                    headers: { Authorization: `Bearer ${token}` }
+                }
+                const res = await axios.post('http://localhost:9999/api/cart', order, config)
+                console.log(res.data)
+        },
+        getOrders: async({commit}) => {             
+                let token = localStorage.getItem('token')
+                const config = {
+                    headers: { Authorization: `Bearer ${token}` }
+                }
+                const res = await axios.get('http://localhost:9999/api/cart/orders', config)
+                commit('SET_ORDERS', res.data)
+
         }
     }
   }

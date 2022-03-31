@@ -22,7 +22,7 @@
             <router-link to="/products" class="nav-link rounded active" aria-current="page">Products</router-link>
             </li>
             <li class="nav-item" v-if="loggedIn">
-            <router-link to="/" class="nav-link rounded active" aria-current="page">Orders</router-link>
+            <router-link to="/orders" class="nav-link rounded active" aria-current="page">Orders</router-link>
             </li>
         </ul>
         <div class="d-flex align-items-center">
