@@ -2,7 +2,7 @@
   <div class="container">
       <div class="d-flex justify-content-between">
         <header class="text-center m-2 fs-3 fw-bolder">Cart</header>
-        <router-link to="/" class="text-dark m-2 text-decoration-underline" @click.prevent="handleSubmit" v-if="loggedIn">Save cart</router-link>
+        <router-link to="/orders" class="text-dark m-2 text-decoration-underline" @click.prevent="handleSubmit" v-if="loggedIn">Save cart</router-link>
       </div>
       <li><hr class="dropdown-divider" /></li>
       <div v-if="shoppingCart.length < 1" class="text-center m-3">
